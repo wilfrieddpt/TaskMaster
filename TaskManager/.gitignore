@@ -1,0 +1,9 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.vscode/
+
+# Build et binaires
+bin/
+obj/
