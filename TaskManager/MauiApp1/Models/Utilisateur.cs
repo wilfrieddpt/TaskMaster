@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using MauiApp1.Models;
 
 public class Utilisateur
 {
