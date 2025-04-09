@@ -10,7 +10,7 @@ public class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseMySql("server=localhost;database=taskmasterdb;user=root;password=root;",
+        options.UseMySql("server=localhost;database=taskmasterdb;user=root;",
             new MySqlServerVersion(new Version(8, 0, 31)));
     }
 
