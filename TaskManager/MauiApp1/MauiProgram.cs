@@ -1,14 +1,7 @@
-﻿<<<<<<< .mine
-
-
-
-
-=======
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using MauiApp1.back_end.Models;
 using MauiApp1.back_end.Services;
 using Microsoft.EntityFrameworkCore;
->>>>>>> .theirs
 using MauiApp1.Data;
 using MauiApp1.Services;
 using Microsoft.EntityFrameworkCore;

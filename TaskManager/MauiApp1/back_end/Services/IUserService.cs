@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MauiApp1.Data;
 
 namespace MauiApp1.back_end.Services;
 public interface IUserService
