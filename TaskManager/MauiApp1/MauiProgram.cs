@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using MauiApp1.back_end.Models;
+using MauiApp1.back_end.Services;
 using Microsoft.EntityFrameworkCore;
 using MauiApp1.Data;
 using MauiApp1.Services;
@@ -19,6 +21,10 @@ namespace MauiApp1
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<IUserService, UserService>();
+            builder.Services.AddTransient<RegisterViewModel>();
+            builder.Services.AddTransient<LoginViewModel>();
+            builder.Logging.AddDebug();
 
 
             // Chaîne de connexion MySQL (modifie selon ta config locale phpMyAdmin)
