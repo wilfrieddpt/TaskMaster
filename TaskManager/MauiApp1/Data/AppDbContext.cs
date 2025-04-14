@@ -13,11 +13,6 @@ namespace MauiApp1.Data
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseMySql("server=localhost;database=taskmasterdb;user=root;",
-                new MySqlServerVersion(new Version(8, 0, 31)));
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -15,14 +15,8 @@ namespace MauiApp1.Pages
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            try
-            {
-                await Shell.Current.GoToAsync("///main");
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Erreur", $"Erreur de navigation : {ex.Message}", "OK");
-            }
+            await Shell.Current.GoToAsync("///main");
+            
         }
 
 

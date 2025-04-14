@@ -8,7 +8,9 @@ namespace MauiApp1.Pages
     {
         private readonly TacheService _tacheService;
 
-        public ObservableCollection<Tache> Taches { get; set; } = new();
+        // Remplacer ObservableCollection par une List pour tester
+        public List<Tache> Taches { get; set; } = new List<Tache>();
+
 
         public MainPage(TacheService tacheService)
         {
@@ -22,22 +24,36 @@ namespace MauiApp1.Pages
         {
             base.OnAppearing();
             Console.WriteLine("OnAppearing called");
+
+            // Vérification du BindingContext
+            Console.WriteLine($"BindingContext: {BindingContext}");
+
             await ChargerTaches();
         }
+
 
         private async Task ChargerTaches()
         {
             var tachesDepuisBdd = await _tacheService.GetTachesAsync();
-
             Console.WriteLine($"Tâches récupérées : {tachesDepuisBdd.Count}");
 
-            Taches.Clear();
-            foreach (var t in tachesDepuisBdd)
+            // Assure-toi que la modification de la collection se fait sur le thread principal
+            MainThread.BeginInvokeOnMainThread(() =>
             {
-                Console.WriteLine($"Tâche : {t.Titre}");
-                Taches.Add(t);
-            }
+                Taches.Clear();  // Remplacer Clear() pour List
+                foreach (var t in tachesDepuisBdd)
+                {
+                    Console.WriteLine($"Tâche : {t.Titre}");
+                    Taches.Add(t);  // Remplacer Add() pour List
+                }
+
+                // Forcer un rafraîchissement de la CollectionView
+                TacheCollectionView.ItemsSource = null;
+                TacheCollectionView.ItemsSource = Taches;
+            });
         }
+
+
 
         private async void OnModifierClicked(object sender, EventArgs e)
         {

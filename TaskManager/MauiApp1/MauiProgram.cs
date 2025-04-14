@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using MauiApp1.Data;
+﻿using MauiApp1.Data;
 using MauiApp1.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 
 namespace MauiApp1
@@ -31,13 +31,17 @@ namespace MauiApp1
             // Enregistre le service de gestion des tâches
             builder.Services.AddTransient<TacheService>();
 
+            // Crée la base de données si elle n'existe pas
+            using var scope = builder.Services.BuildServiceProvider().CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            dbContext.Database.EnsureCreated();
+
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
-            // Enregistrer TacheService pour l'injection de dépendances
-            builder.Services.AddSingleton<TacheService>();
+
 
             return builder.Build();
         }
