@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp1.back_end.Models"
              x:Class="MauiApp1.Pages.RegisterPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             Title="Inscription">
 
-	<VerticalStackLayout Padding="20">
-
-		<!-- Titre de la page -->
-		<Label Text="Créer un compte"
+    <StackLayout Padding="20" Spacing="15">
+        <!-- Titre de la page -->
+        <Label Text="Créer un compte"
                FontSize="30"
                HorizontalOptions="Center"
                TextColor="{DynamicResource TextColor}" />
 
-		<!-- Champs de saisie -->
-		<Entry x:Name="UsernameEntry"
-               Placeholder="Nom d'utilisateur"
+        <!-- Champs de saisie -->
+        <Entry Placeholder="Nom"
+               Text="{Binding Nom}"
                TextColor="{DynamicResource TextColor}"
-               BackgroundColor="{DynamicResource EntryBackgroundColor}"
-               Margin="0,10,0,10" />
+               BackgroundColor="{DynamicResource EntryBackgroundColor}" />
 
-		<Entry x:Name="EmailEntry"
-               Placeholder="Email"
+        <Entry Placeholder="Prénom"
+               Text="{Binding Prenom}"
+               TextColor="{DynamicResource TextColor}"
+               BackgroundColor="{DynamicResource EntryBackgroundColor}" />
+
+        <Entry Placeholder="Email"
+               Text="{Binding Email}"
                Keyboard="Email"
                TextColor="{DynamicResource TextColor}"
-               BackgroundColor="{DynamicResource EntryBackgroundColor}"
-               Margin="0,10,0,10" />
+               BackgroundColor="{DynamicResource EntryBackgroundColor}" />
 
-		<Entry x:Name="PasswordEntry"
-               Placeholder="Mot de passe"
+        <Entry Placeholder="Mot de passe"
+               Text="{Binding Password}"
                IsPassword="True"
                TextColor="{DynamicResource TextColor}"
-               BackgroundColor="{DynamicResource EntryBackgroundColor}"
-               Margin="0,10,0,10" />
+               BackgroundColor="{DynamicResource EntryBackgroundColor}" />
 
-		<Entry x:Name="ConfirmPasswordEntry"
-               Placeholder="Confirmer le mot de passe"
-               IsPassword="True"
-               TextColor="{DynamicResource TextColor}"
-               BackgroundColor="{DynamicResource EntryBackgroundColor}"
-               Margin="0,10,0,10" />
-
-		<!-- Bouton d'inscription -->
-		<Button Text="S'inscrire"
+        <!-- Bouton d'inscription -->
+        <Button Text="S'inscrire"
+                Command="{Binding RegisterCommand}"
                 BackgroundColor="{DynamicResource ButtonBackgroundColor}"
-                TextColor="White"
-                Clicked="OnRegisterClicked"
-                Margin="0,10,0,10"/>
-	</VerticalStackLayout>
+                TextColor="White" />
+    </StackLayout>
 </ContentPage>
