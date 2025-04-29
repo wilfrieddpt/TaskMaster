@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using MauiApp1.back_end.Models;
+﻿using MauiApp1.back_end.Models;
 using MauiApp1.back_end.Services;
-using Microsoft.EntityFrameworkCore;
 using MauiApp1.Data;
 using MauiApp1.Services;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +26,9 @@ namespace MauiApp1
             builder.Services.AddTransient<LoginViewModel>();
             builder.Logging.AddDebug();
 
+            System.Diagnostics.Debug.WriteLine("=== Étape 1 atteinte ===");
+
+
 
             // Chaîne de connexion MySQL (modifie selon ta config locale phpMyAdmin)
             var connectionString = "server=localhost;user=root;database=taskmasterdb";
@@ -41,8 +42,9 @@ namespace MauiApp1
 
             // Crée la base de données si elle n'existe pas
             using var scope = builder.Services.BuildServiceProvider().CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            dbContext.Database.EnsureCreated();
+
+            System.Diagnostics.Debug.WriteLine("=== Étape 2 atteinte ===");
+
 
 
 #if DEBUG

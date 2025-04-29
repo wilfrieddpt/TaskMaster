@@ -11,12 +11,15 @@ namespace MauiApp1.Pages
         public LoginPage()
         {
             InitializeComponent();
+            System.Diagnostics.Debug.WriteLine("=== Étape atteinte ===");
+
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("///main");
-            
+            System.Diagnostics.Debug.WriteLine("=== Étape 3 atteinte ===");
+
         }
 
 

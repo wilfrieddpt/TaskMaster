@@ -41,11 +41,23 @@
                                         Clicked="OnModifierClicked"
                                         CommandParameter="{Binding .}"
                                         HorizontalOptions="End" />
+                                <Button Text="Supprimer la tache"
+                                        Clicked="OnSupprimerClicked"
+                                        HorizontalOptions="End"
+                                        TextColor="White" />
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button Text="Ajouter une tâche"
+                    Clicked="OnAjouterClicked"
+                    HorizontalOptions="Center"
+                    TextColor="White" />
+            <Button Text="Se déconnecter"
+                    Clicked="OnDeconnexionClicked"
+                    HorizontalOptions="Center"
+                    TextColor="White" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

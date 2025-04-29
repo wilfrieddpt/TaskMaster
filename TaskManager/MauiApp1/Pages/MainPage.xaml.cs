@@ -15,9 +15,14 @@ namespace MauiApp1.Pages
         public MainPage(TacheService tacheService)
         {
             BindingContext = this;
+            System.Diagnostics.Debug.WriteLine("=== Étape 4 atteinte ===");
+
             InitializeComponent();
             _tacheService = tacheService;
-            
+
+            System.Diagnostics.Debug.WriteLine("=== Étape 5 atteinte ===");
+
+
         }
 
         protected override async void OnAppearing()
@@ -63,6 +68,37 @@ namespace MauiApp1.Pages
             {
                 await Shell.Current.GoToAsync($"edit?tacheId={tache.Id}");
             }
+        }
+
+        private async void OnSupprimerClicked(object sender, EventArgs e)
+        {
+            var bouton = sender as Button;
+            var tache = bouton?.CommandParameter as Tache;
+            if (tache != null)
+            {
+                var result = await DisplayAlert("Confirmation", "Voulez-vous vraiment supprimer cette tâche ?", "Oui", "Non");
+                if (result)
+                {
+                    // Appeler la méthode de suppression ici
+                    // await _tacheService.DeleteTacheAsync(tache.Id);
+                    await ChargerTaches();
+                }
+            }
+        }
+
+        private async void OnDeconnexionClicked(object sender, EventArgs e) 
+        {
+            var result = await DisplayAlert("Confirmation", "Voulez-vous vraiment vous déconnecter ?", "Oui", "Non");
+            if (result)
+            {
+                // Logique de déconnexion ici
+                await Shell.Current.GoToAsync("//login");
+            }
+        }
+
+        private async void OnAjouterClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("add");
         }
     }
 }

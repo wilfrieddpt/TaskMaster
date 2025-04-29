@@ -10,5 +10,6 @@
     <ShellContent Route="login" ContentTemplate="{DataTemplate Pages:LoginPage}" />
     <ShellContent Route="register" ContentTemplate="{DataTemplate Pages:RegisterPage}" />
     <ShellContent Route="main" ContentTemplate="{DataTemplate Pages:MainPage}" />
+    
 
 </Shell>

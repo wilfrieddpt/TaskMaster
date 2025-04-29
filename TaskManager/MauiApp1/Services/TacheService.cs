@@ -11,11 +11,23 @@ namespace MauiApp1.Services
         public TacheService(AppDbContext context)
         {
             _context = context;
+            _context.Database.EnsureCreated();
         }
 
         public async Task<List<Tache>> GetTachesAsync()
         {
             return await _context.Taches.ToListAsync();
+        }
+
+        public async Task<Tache?> GetTacheByIdAsync(int id)
+        {
+            return await _context.Taches.FindAsync(id);
+        }
+
+        public async Task UpdateTacheAsync(Tache tache)
+        {
+            _context.Taches.Update(tache);
+            await _context.SaveChangesAsync();
         }
     }
 }

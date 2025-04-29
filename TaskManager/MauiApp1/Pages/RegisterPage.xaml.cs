@@ -20,6 +20,18 @@ namespace MauiApp1.Pages
         {
             await Shell.Current.GoToAsync("///login");
         }
+
+        private async void GoToLoginCommand(object sender, EventArgs e)
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("///login");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur de navigation : {ex.Message}");
+            }
+        }
     }
 }
 
